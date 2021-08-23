@@ -111,7 +111,7 @@ class Profile extends GetView {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(140),
-                      image: DecorationImage(image: AssetImage('assets/p1.png'))
+                      image: DecorationImage(image: AssetImage('assets/profile.png'))
                   ),
 
                 ),

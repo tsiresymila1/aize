@@ -1,7 +1,7 @@
 import 'package:aize/controllers/dashboard.dart';
-import 'package:aize/routes/product.dart';
-import 'package:aize/utils/data.dart';
-import 'package:aize/widgets/botttomnav.dart';
+import 'package:aize/routes/delivery_manager.dart';
+import 'package:aize/routes/product_manager.dart';
+import 'package:aize/routes/warehouse_manager.dart';
 import 'package:aize/widgets/dash.dart';
 import 'package:aize/widgets/logo.dart';
 import 'package:aize/widgets/base.dart';
@@ -28,9 +28,11 @@ class Dashboard extends GetView<DashBoardController> {
                 child: Row(
                   children: [
                     Dash(text: 'Produits', callback: (){
-                      Get.to(Product());
+                      Get.to(ProductManager());
                     },),
-                    Dash(text: 'Dépot', callback: (){})
+                    Dash(text: 'Dépot', callback: (){
+                      Get.to(()=>WarehouseManager());
+                    })
                   ],
                 ),
               ),
@@ -38,7 +40,9 @@ class Dashboard extends GetView<DashBoardController> {
                 padding:  EdgeInsets.only(top: 12.h),
                 child: Row(
                   children: [
-                    Dash(text: 'Livraison', callback: (){},),
+                    Dash(text: 'Livraison', callback: (){
+                      Get.to(()=>DeliveryManager());
+                    },),
                     Dash(text: 'Bon', callback: (){})
                   ],
                 ),
