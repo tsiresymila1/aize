@@ -61,32 +61,8 @@ class DeliverItem extends GetView {
                       padding: EdgeInsets.all(2),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 4.h),
-                            height: 25.h,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(25.r),
-                                          side: BorderSide(color: Constant.colorPrimaryAccent)
-                                      )
-                                  )
-                              ),
-                              onPressed: ()=>{
-                              },
-                              child: Container(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('Consulter',style: TextStyle(color: Colors.white,fontSize: 11),),
-                                    Icon(Icons.arrow_right_alt,color: Color(0xffffffff),size: 18,)
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
                           Container(
                             margin: EdgeInsets.only(top: 4.h),
                             height: 25.h,
@@ -105,7 +81,6 @@ class DeliverItem extends GetView {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Supprimer',style: TextStyle(color: Colors.white,fontSize: 11),),
                                     Icon(Icons.delete,color: Colors.red,size: 15,)
                                   ],
                                 ),
@@ -130,7 +105,6 @@ class DeliverItem extends GetView {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Modifier',style: TextStyle(color: Colors.white,fontSize: 11),),
                                     Icon(Icons.edit,color: Color(0xff0000ff),size: 15,)
                                   ],
                                 ),

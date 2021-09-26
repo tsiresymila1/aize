@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Dashboard extends GetView<DashBoardController> {
+class StockMenu extends GetView<DashBoardController> {
 
 
 
@@ -43,7 +43,15 @@ class Dashboard extends GetView<DashBoardController> {
                     Dash(text: 'Livraison', callback: (){
                       Get.to(()=>DeliveryManager());
                     },),
-                    Dash(text: 'Bon', callback: (){})
+                    Dash(text: 'Bon de réception', callback: (){})
+                  ],
+                ),
+              ),
+              Padding(
+                padding:  EdgeInsets.only(top: 12.h),
+                child: Row(
+                  children: [
+                    Dash(text: 'Bon de livraison', callback: (){})
                   ],
                 ),
               )

@@ -1,24 +1,32 @@
 import 'package:aize/utils/data.dart';
-import 'package:aize/widgets/botttomnav.dart';
+import 'package:aize/widgets/base.dart';
 import 'package:aize/widgets/delivery_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DeliveryManager extends GetView {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Constant.colorPrimary,
-      appBar: AppBar(
-        leading: BackButton(),
-        title: Text('Gestion des livraisons',style: TextStyle(color: Colors.white),),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.add_circle))
-        ],
-      ),
-      body: Container(
+    return BaseView(
+      title: "Livraison",
+      isback: true,
+      top: 136.h,
+      height: 280.h,
+      actions: [
+        InkWell(
+          child: Container(
+            padding: EdgeInsets.all(8.0).copyWith(top: 20, left: 10),
+            child: Icon(EvilIcons.plus,color: Colors.white,size: 30,),
+          ),
+          onTap: (){
+
+          },
+        ),
+      ],
+      body : Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -28,7 +36,25 @@ class DeliveryManager extends GetView {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    height: 50.h,
+                    margin: EdgeInsets.symmetric(vertical: 8.h),
+                    height: 40.h,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          filled: true,
+                          hintText: 'Recherche de livraison',
+                          hintStyle: TextStyle(fontSize: 13.sp),
+                          prefixIcon: Icon(Icons.search),
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(1.r),
+                              borderSide: BorderSide.none
+                          )
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 40.h,
                     margin: EdgeInsets.symmetric(vertical: 8.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -40,11 +66,14 @@ class DeliveryManager extends GetView {
                           padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: FlutterToggleTab(
                               labels: ['Sortante','Entrante'],
+                              selectedBackgroundColors: [Color(0xf60b5999)],
+                              unSelectedBackgroundColors: [Color(0xfff1f1f1)],
                               isScroll: false,
                               initialIndex: 0,
+                              borderRadius: 0,
                               width: 0.1.sw,
-                              selectedTextStyle: TextStyle(color: Colors.white),
-                              unSelectedTextStyle: TextStyle(),
+                              selectedTextStyle: TextStyle(color: Colors.white,fontSize: 13.sp),
+                              unSelectedTextStyle: TextStyle(color: Constant.colorPrimary,fontSize: 13.sp),
                               selectedLabelIndex: (index){
                                 printInfo(info:index.toString());
 
@@ -60,7 +89,7 @@ class DeliveryManager extends GetView {
                                   filled: true,
                                   fillColor: Colors.white,
                                   enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20.r),
+                                    borderRadius: BorderRadius.circular(0.r),
                                     borderSide: BorderSide(
                                       color: Colors.grey.shade300,
                                     ),
@@ -71,7 +100,8 @@ class DeliveryManager extends GetView {
                                         color: Constant.colorPrimary,
                                       )
                                   ),
-                                  hintText: 'Fait'
+                                  hintText: 'Fait',
+                                hintStyle: TextStyle(fontSize: 13.sp)
                               ),
                               icon: Icon(                // Add this
                                 Icons.arrow_drop_down,  // Add this
@@ -80,7 +110,7 @@ class DeliveryManager extends GetView {
                               items: <String>['Fait', 'En cours'].map((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: new Text(value),
+                                  child: new Text(value,style: TextStyle(fontSize: 13.sp),),
                                 );
                               }).toList(),
                               onChanged: (_) {},
@@ -89,36 +119,19 @@ class DeliveryManager extends GetView {
                       ],
                     ),
                   ),
-                  Container(
-                    height: 50.h,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          filled: true,
-                          hintText: 'Recherche de livraison',
-                          prefixIcon: Icon(Icons.search),
-                          fillColor: Colors.white,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: BorderSide.none
-                          )
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
             Container(
-              height: 0.616.sh,
-              child: ListView.builder(itemCount: 10,itemBuilder: (BuildContext context, int index) {
+              height: 0.580.sh,
+              child: ListView.builder(itemCount: 10,padding: EdgeInsets.only(top: 8.h),itemBuilder: (BuildContext context, int index) {
                 return DeliveryItem();
               },
               ),
             )
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigation(),
+      ), onSearch: (String data) {  },
     );
   }
 

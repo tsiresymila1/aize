@@ -52,7 +52,7 @@ class Profile extends GetView {
                                          crossAxisAlignment: CrossAxisAlignment.start,
                                          children: [
                                            Text('Kanto Fitiavana',style: TextStyle(color: Colors.white,fontSize: 30.sp),),
-                                           Text('DIrecteur Génerale',style: TextStyle(color: Colors.grey,fontSize: 24.sp),)
+                                           Text('Administrateur',style: TextStyle(color: Colors.grey,fontSize: 24.sp),)
                                          ],
                                        ),
                                      ),
@@ -79,7 +79,7 @@ class Profile extends GetView {
                                    children: [
                                      ProfileAction(title: 'Liste des produits', value: '5', callback: (){}),
                                      ProfileAction(title: 'Liste des demandes', value: '5', callback: (){}),
-                                     ProfileAction(title: 'Productivité',callback: (){}),
+                                     // ProfileAction(title: 'Productivité',callback: (){}),
                                    ],
                                  ),
                                )
